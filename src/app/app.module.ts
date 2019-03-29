@@ -16,11 +16,13 @@ import { reducers, metaReducers } from './store/reducer';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { EffectsModule } from '@ngrx/effects';
 import { CommonEffects } from './store/effects';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

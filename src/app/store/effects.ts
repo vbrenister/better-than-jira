@@ -5,6 +5,7 @@ import { map, catchError, switchMap } from 'rxjs/operators';
 
 import { Union, ActionType, LoginFailureAction, LoginSuccessAction } from './actions';
 import { DataService } from '../services/data.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class CommonEffects {
@@ -16,12 +17,19 @@ export class CommonEffects {
         switchMap(action =>
             this.dataService
             .login(action.username, action.password)),
-        map(ok => ok ? new LoginSuccessAction() : new LoginFailureAction()),
+        map(ok => {
+            if (ok) {
+                this.router.navigate(['/home']);
+                return new LoginSuccessAction('LOGIN');
+            }
+            return new LoginFailureAction();
+        }),
         catchError(() => of(new LoginFailureAction()))
     );
 
     constructor(private actions$: Actions<Union>,
-                private dataService: DataService) {
+                private dataService: DataService,
+                private router: Router) {
     }
 
 }
