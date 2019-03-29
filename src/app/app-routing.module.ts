@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginPageComponent } from './login-page/login-page.component';
+import { LoginPageComponent } from '@app/containers/login-page/login-page.component';
 import { AuthorizationGuardService } from './services/authorization-guard.service';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from '@app/containers/home/home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

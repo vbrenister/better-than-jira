@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LoginRequestAction } from '../store/actions';
+import { LoginRequestAction } from '@app/store/actions';
+import { StateService } from '@app/services/state.service';
 
 @Component({
   selector: 'app-login-page',
@@ -9,17 +10,17 @@ import { LoginRequestAction } from '../store/actions';
 })
 export class LoginPageComponent implements OnInit {
 
-  username: string = "";
-  password: string = "";
+  username = '';
+  password = '';
 
-  constructor(private store: Store<unknown>) { }
+  constructor(private stateService: StateService) { }
 
   ngOnInit() {
   }
 
   login() {
     const { username, password } = this;
-    this.store.dispatch(new LoginRequestAction(username, password));
+    this.stateService.login(username, password);
   }
 
 }

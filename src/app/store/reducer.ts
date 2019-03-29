@@ -25,7 +25,7 @@ const initialState: State = {
 export const getUsername =
   createSelector<State, string, string>(
     (s: State) => s.user.username,
-    (username) => '@' + username);
+    (username) => username);
 
 export const reducers: ActionReducerMap<State> = {
   user

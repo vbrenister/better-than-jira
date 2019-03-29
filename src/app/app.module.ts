@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatToolbar, MatToolbarModule, MatIconModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
@@ -13,10 +13,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store/reducer';
-import { LoginPageComponent } from './login-page/login-page.component';
+import { LoginPageComponent } from '@app/containers/login-page/login-page.component';
 import { EffectsModule } from '@ngrx/effects';
 import { CommonEffects } from './store/effects';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from '@app/containers/home/home.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,8 @@ import { HomeComponent } from './components/home/home.component';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
     FormsModule,
     CommonModule,
     EffectsModule.forRoot([CommonEffects]),

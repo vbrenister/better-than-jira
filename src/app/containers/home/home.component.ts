@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { State, getUsername } from 'src/app/store/reducer';
 import { Observable } from 'rxjs';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  username$: Observable<string> = this.store.pipe(
-    select(getUsername)
-  );
+  username$: Observable<string> = this.stateService.getUsername();
 
-  constructor(private store: Store<State>) { }
+  constructor(private stateService: StateService) { }
 
   ngOnInit() {
   }
