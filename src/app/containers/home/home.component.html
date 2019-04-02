@@ -1,8 +1,17 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Third Line</span>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+    <a mat-button [routerLink]="'/issues'">Issues</a>
+    <button mat-raised-button>Create</button>
+    <span class="spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+        {{ username$ | async }}
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Profile</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
+
+<router-outlet></router-outlet>

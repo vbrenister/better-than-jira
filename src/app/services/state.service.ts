@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { State, getUsername } from '../store/reducer';
+import { State, getUsername, User } from '../store/reducer';
 import { Observable } from 'rxjs';
-import { LoginRequestAction } from '../store/actions';
+import { LoginRequestAction, SetUserDataAction, LogoutAction } from '../store/actions';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,11 @@ export class StateService {
     this.store.dispatch(new LoginRequestAction(username, password));
   }
 
+  logout() {
+    this.store.dispatch(new LogoutAction());
+  }
 
+  setUserData(user: User) {
+    this.store.dispatch(new SetUserDataAction(user));
+  }
 }

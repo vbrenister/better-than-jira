@@ -6,7 +6,7 @@ import {
 import { environment } from '../../environments/environment';
 import { Union, ActionType } from './actions';
 
-interface User {
+export interface User {
   username: string;
   displayName: string;
 }
@@ -34,10 +34,10 @@ export const reducers: ActionReducerMap<State> = {
 function user(state: User = initialState.user, action: Union): User  {
   switch (action.type) {
     case ActionType.LoginSuccess:
-      return {
-        username: action.username,
-        displayName: `Mr.${action.username}`
-      };
+    case ActionType.SetUserData:
+      return action.user;
+    case ActionType.Logout:
+      return initialState.user;
   }
   return state;
 }
